@@ -14,7 +14,7 @@ const Hero = () => {
             Hi, I'm <span>Shardul Sawant</span>
           </h1>
           <p className="subtitle">
-            Software Developer at WebMD
+            Software Engineer
           </p>
           <p className="description">
             I'm passionate about building exceptional software solutions and
