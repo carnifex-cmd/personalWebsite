@@ -14,11 +14,10 @@ const Hero = () => {
             Hi, I'm <span>Shardul Sawant</span>
           </h1>
           <p className="subtitle">
-            Software Engineer
+            Fullstack Developer
           </p>
           <p className="description">
-            I'm passionate about building exceptional software solutions and
-            creating impactful user experiences.
+          I design smooth, intuitive experiences — one pixel and function at a time. Always building, always learning.
           </p>
 
           <div className="social-links">

@@ -15,7 +15,9 @@ const About = () => {
           <div className="about-grid">
             <div className="about-text">
               <p>
-              I’m a Software Engineer with 3+ years of experience crafting responsive, scalable, and user-first applications. I’ve worked on high-traffic platforms serving millions of users daily, focusing on delivering seamless experiences and clean, maintainable code. I care about performance, usability, and building products that just work.
+              Hey, I'm Shardul — a fullstack developer who enjoys building for the web. With over 3 years of experience, I’ve worked on high-traffic platforms and projects that actually hold up in the real world.
+
+I care about clean code, fast performance, and smooth user experiences. Most days, you’ll find me experimenting with side projects, learning something new, or just refining the little details that make things feel right.
               </p>
             </div>
             
