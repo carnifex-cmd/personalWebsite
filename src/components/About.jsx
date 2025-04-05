@@ -15,25 +15,18 @@ const About = () => {
           <div className="about-grid">
             <div className="about-text">
               <p>
-                I'm a Software Engineer with 2+ years of experience in building responsive, scalable, and user-centric applications,
-                including high-traffic platforms handling around 2.5 million daily visits. I'm proficient in VueJs and
-                JavaScript(ES6), with a strong background in modern web development.
-              </p>
-              <p>
-                I specialize in working with Scrum teams to deliver seamless integration of technologies,
-                ensuring optimized performance for applications that serve millions of users daily. My focus is on
-                creating efficient, scalable solutions while maintaining high code quality standards.
+              I’m a Software Engineer with 3+ years of experience crafting responsive, scalable, and user-first applications. I’ve worked on high-traffic platforms serving millions of users daily, focusing on delivering seamless experiences and clean, maintainable code. I care about performance, usability, and building products that just work.
               </p>
             </div>
             
             <div className="quick-facts">
               <h3>Quick Facts</h3>
               <ul className="facts-list">
-                <li>🎓 Bachelor of Engineering in Computer Engineering - University of Mumbai</li>
-                <li>💼 2+ years of professional experience</li>
-                <li>🌍 Based in Mumbai, India</li>
-                <li>🚀 Passionate about Web Development and Performance Optimization</li>
-                <li>📚 Currently working at WebMD as Software Engineer</li>
+                <li>🎓 B.E. in Computer Engineering</li>
+                <li>💼 3+ years building cool stuff that actually ships</li>
+                <li>🌆 Based in Mumbai – powered by street food & late-night debugging</li>
+                <li>🚀 Into fast-loading websites, slick UIs, and clean backend logic</li>
+                <li>🛠️ Currently solving real-world dev puzzles at WebMD</li>
               </ul>
             </div>
           </div>

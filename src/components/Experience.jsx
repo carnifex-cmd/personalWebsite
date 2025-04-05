@@ -7,18 +7,34 @@ const Experience = () => {
       company: "WebMD",
       position: "Software Engineer",
       period: "June 2022 - Present",
-      description: [
-        "Led the development of an ads comparison tool to compare page-level and slot-level ad targets from two different URLs, reducing manual testing efforts by 40%.",
-        "Integrated user identification tools like Transmunion Connectivity API, Pulsepoint ID5, and Liveramp, enhancing user personalization and ad targeting across WebMD website.",
-        "Optimized software performance and user experience, implementing a viewport-based ad debounce mechanism, improving page scrolling and core web vitals by reducing unnecessary ad requests and enhancing page load speed by 400ms.",
-        "Researched and implemented emerging technologies and frameworks, such as Server-Side Rendering (SSR) for Medscape pages, resulting in a 20% increase in SEO performance and 15% faster page load times.",
-        "Enforced unit testing, achieving 95% code coverage, ensuring code quality and reliability.",
-        "Developed new dynamic ad creatives named Appointment-360 and Doctor Discussion Guide, resulting in a 5% increase in newsletter subscriptions.",
-        "Developed and spearheaded the creation of the Helios Team management application.",
-        "Collaborated with geographically distributed teams, ensuring efficient communication and achieving a 100% sprint completion rate for 10 consecutive sprints.",
-        "Authored and maintained detailed technical documentation for various systems and APIs.",
-        "Worked on optimizing the ads framework, improving performance by 20% and driving higher ad revenue.",
-        "Mentored junior developers under WebMD Helios Program, fostering skill development."
+      sections: [
+        {
+          title: "WebMD Ads",
+          items: [
+            "Designed and built a React-based ads comparison tool, reducing manual testing efforts by 40%.",
+            "Integrated REST APIs like Transunion, Pulsepoint ID5, and Liveramp for advanced user personalization and targeting.",
+            "Enhanced ad framework performance with a viewport-based debounce system, improving scroll smoothness and reducing ad request overhead, resulting in a 400ms faster load time.",
+            "Developed dynamic and reusable ad components named Appointment-360 and Doctor Discussion Guide with cross-platform compatibility, resulting in a 5% increase in newsletter subscriptions."
+          ]
+        },
+        {
+          title: "Medscape",
+          items: [
+            "Engineered responsive headers for both desktop and mobile platforms using React and CSS.",
+            "Implemented Server-Side Rendering (SSR) for Medscape pages, resulting in a 20% increase in SEO performance and 15% faster page load times.",
+            "Built RESTful APIs with Node.js and Express for seamless data handling and inter-service communication.",
+            "Maintained high code quality through regular code reviews and CI pipelines; ensured 100% sprint completion in cross-functional teams."
+          ]
+        },
+        {
+          title: "WebMD Helios Website",
+          items: [
+            "Spearheaded development of the Helios team management app for tracking working hours and team info.",
+            "Integrated Redux for robust and scalable state management across the application, improving maintainability and performance.",
+            "Enforced unit testing, achieving 95% code coverage, ensuring code quality and reliability, and reducing potential bugs during deployment.",
+            "Mentored junior developers, contributing to a collaborative and high-performing team environment."
+          ]
+        }
       ]
     }
   ];
@@ -32,7 +48,7 @@ const Experience = () => {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2>Work Experience</h2>
+          <h2>What I Do</h2>
           
           <div className="experience-list">
             {experiences.map((exp, index) => (
@@ -52,11 +68,16 @@ const Experience = () => {
                     <h3>{exp.position}</h3>
                     <p className="company">{exp.company}</p>
                     <p className="period">{exp.period}</p>
-                    <ul className="description-list">
-                      {exp.description.map((item, i) => (
-                        <li key={i}>{item}</li>
-                      ))}
-                    </ul>
+                    {exp.sections.map((section, sectionIndex) => (
+                      <div key={sectionIndex} className="experience-section">
+                        <h4>{section.title}</h4>
+                        <ul className="description-list">
+                          {section.items.map((item, i) => (
+                            <li key={i}>{item}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </motion.div>
@@ -68,4 +89,4 @@ const Experience = () => {
   );
 };
 
-export default Experience; 
+export default Experience;

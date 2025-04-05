@@ -9,16 +9,24 @@ import Experience from './components/Experience'
 import Contact from './components/Contact'
 
 function App() {
-  const [theme, setTheme] = useState('dark')
-  const [highContrast, setHighContrast] = useState(false)
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    return savedTheme || 'dark';
+  });
+  const [highContrast, setHighContrast] = useState(() => {
+    const savedContrast = localStorage.getItem('contrast');
+    return savedContrast === 'true';
+  });
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
   }, [theme])
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-contrast', highContrast ? 'high' : 'normal')
-  }, [highContrast])
+    document.documentElement.setAttribute('data-contrast', highContrast ? 'high' : 'normal');
+    localStorage.setItem('contrast', highContrast.toString());
+  }, [highContrast]);
 
   const toggleTheme = () => {
     setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light')

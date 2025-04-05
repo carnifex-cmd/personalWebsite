@@ -2,14 +2,9 @@ import { useState, useEffect } from 'react';
 import { FaBars, FaTimes, FaSun, FaMoon, FaEye } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
-const Navbar = () => {
+const Navbar = ({ theme, toggleTheme, highContrast, toggleContrast }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [theme, setTheme] = useState(() => {
-    const savedTheme = localStorage.getItem('theme');
-    return savedTheme || 'dark';
-  });
-  const [isHighContrast, setIsHighContrast] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,20 +17,6 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrolled]);
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'dark' ? 'light' : 'dark');
-  };
-
-  const toggleHighContrast = () => {
-    setIsHighContrast(!isHighContrast);
-    document.documentElement.setAttribute('data-contrast', !isHighContrast ? 'high' : 'normal');
-  };
 
   const navItems = [
     { label: 'Home', href: '#home' },
@@ -65,7 +46,7 @@ const Navbar = () => {
         <div className="nav-right">
           <button
             className="high-contrast-toggle"
-            onClick={toggleHighContrast}
+            onClick={toggleContrast}
             aria-label="Toggle high contrast mode"
           >
             <FaEye />
@@ -102,4 +83,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar; 
+export default Navbar;
