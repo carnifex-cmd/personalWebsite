@@ -23,7 +23,7 @@ const Navbar = ({ theme, toggleTheme, highContrast, toggleContrast }) => {
     { label: 'About', href: '#about' },
     { label: 'Skills', href: '#skills' },
     { label: 'Experience', href: '#experience' },
-    // { label: 'Projects', href: '#projects' },  // Commented until projects are ready
+    { label: 'Projects', href: '#projects' },  // Commented until projects are ready
     { label: 'Contact', href: '#contact' },
   ];
 
