@@ -5,7 +5,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Skills from './components/Skills'
 import Experience from './components/Experience'
-// import Projects from './components/Projects'  // Commented until projects are ready
+import Projects from './components/Projects'  // Commented until projects are ready
 import Contact from './components/Contact'
 
 function App() {
@@ -51,7 +51,7 @@ function App() {
         <Skills />
         <Experience />
         {/* Projects section commented out until ready to showcase */}
-        {/* <Projects /> */}
+        <Projects />
         <Contact />
       </main>
     </div>
