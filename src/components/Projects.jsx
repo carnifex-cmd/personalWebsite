@@ -2,13 +2,14 @@ import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import jobApplicationImage from '../assets/jobapplication.jpg';
 import matchYourCodeImage from '../assets/matchyourcode.jpg';
+import echoBoard from '../assets/echoboard.png';
 
 const Projects = () => {
   const projects = [
     {
       title: "MatchYourCode",
       description: "Developed a platform to assist developers in mastering Data Structures & Algorithms through spaced repetition of LeetCode-style problems",
-      image: matchYourCodeImage, // Add your project image
+      image: matchYourCodeImage, 
       technologies: ["React", "Node.js", "MongoDB"],
       github: "https://github.com/carnifex-cmd/matchyourcode",
       // live: "https://project1-demo.com"
@@ -16,12 +17,20 @@ const Projects = () => {
     {
       title: "Job Application Tracker Dashboard",
       description: "Developed a modern, full-stack job application tracking dashboard built with React and Node.js. Track a job search progress with a clean, responsive interface and powerful features.",
-      image: jobApplicationImage, // Use the imported image
+      image: jobApplicationImage, 
       technologies: ["React", "Node.js", "Express", "PostgreSQL", "Tailwind CSS"],
-      github: "https://github.com/carnifex-cmd/JobApplicationTracker/blob/main/README.md",
+      github: "https://github.com/carnifex-cmd/JobApplicationTracker",
       live: "https://job-application-tracker-sage-five.vercel.app/"
     },
-    // Add more projects as needed
+    {
+      title: "Echo Board",
+      description: "Developed a personal audio message board using React and Firebase. Record, organize, and share voice notes with custom boards. Features Google authentication, privacy controls, and a responsive Tailwind CSS design for seamless desktop and mobile use.",
+      image: echoBoard, 
+      technologies: ["React", "Firebase (Firestore, Storage, Authentication)", "Tailwind CSS", "Web Audio API", "React Router", "Context API"],
+      github: "https://github.com/carnifex-cmd/echoBoard",
+      live: "https://echo-board-theta.vercel.app/"
+    }
+
   ];
 
   return (
@@ -45,7 +54,6 @@ const Projects = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                {/* Custom image container that bypasses CSS constraints */}
                 {project.image && (
                   <div style={{ 
                     width: '100%', 
