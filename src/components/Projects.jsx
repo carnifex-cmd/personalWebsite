@@ -12,7 +12,6 @@ const Projects = () => {
       image: matchYourCodeImage, 
       technologies: ["React", "Node.js", "MongoDB"],
       github: "https://github.com/carnifex-cmd/matchyourcode",
-      // live: "https://project1-demo.com"
     },
     {
       title: "Job Application Tracker Dashboard",
