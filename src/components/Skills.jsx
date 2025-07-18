@@ -3,7 +3,7 @@ import {
   FaReact, FaNodeJs, FaGitAlt,
   FaHtml5, FaCss3Alt, FaJs, FaPython, FaDocker, FaGithub, FaJira
 } from 'react-icons/fa';
-import { SiVuedotjs, SiWebpack, SiMongodb, SiFastapi } from 'react-icons/si';
+import { SiVuedotjs, SiWebpack, SiMongodb, SiFastapi, SiPostgresql, SiTailwindcss, SiNextdotjs, SiFirebase } from 'react-icons/si';
 
 const Skills = () => {
   const skills = [
@@ -17,8 +17,11 @@ const Skills = () => {
     {
       category: "Frameworks",
       items: [
+        { name: "React.js", icon: <FaReact /> },
         { name: "Vue.js", icon: <SiVuedotjs /> },
-        { name: "React", icon: <FaReact /> },
+        { name: "Next.js", icon: <SiNextdotjs /> },
+        { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+
       ]
     },
     {
@@ -26,6 +29,8 @@ const Skills = () => {
       items: [
         { name: "Node.js", icon: <FaNodeJs /> },
         { name: "FastAPI", icon: <SiFastapi /> },
+        { name: "Firebase", icon: <SiFirebase /> },
+        { name: "PostgreSQL", icon: <SiPostgresql /> },
         { name: "MongoDB", icon: <SiMongodb /> },
       ]
     },
