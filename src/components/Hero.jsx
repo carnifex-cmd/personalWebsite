@@ -54,7 +54,7 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 2.5, duration: 0.5 }}
           >
-          I design smooth, intuitive experiences — one pixel and function at a time. Always building, always learning.
+          Designing what you see, engineering what you don’t... shaping seamless experiences end to end.
           </motion.p>
 
           <motion.div 
