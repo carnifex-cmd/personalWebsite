@@ -1,73 +1,58 @@
-import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 const Hero = () => {
   return (
     <section id="home" className="hero">
-      <div className="hero-content">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h1 className="hero-title">
-            Hi, I'm{' '}
-            <motion.span
-              initial={{ 
-                opacity: 0, 
-                y: -200, 
-                scale: 0.3,
-                rotateZ: -15
-              }}
-              animate={{ 
-                opacity: 1, 
-                y: 0, 
-                scale: 1,
-                rotateZ: 0
-              }}
-              transition={{
-                delay: 0.8,
-                duration: 1.2,
-                type: "spring",
-                stiffness: 200,
-                damping: 15
-              }}
-              style={{
-                display: 'inline-block',
-                transformOrigin: 'center'
-              }}
-            >
-              Shardul Sawant
-            </motion.span>
-          </h1>
-          <motion.p 
-            className="subtitle"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2.2, duration: 0.5 }}
+      <div className="container">
+        <div className="hero-inner">
+          <p
+            className="hero-eyebrow"
+            data-reveal
+            style={{ '--reveal-delay': '0.05s' }}
           >
             A Fullstack Developer
-          </motion.p>
-          <motion.p 
-            className="description"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2.5, duration: 0.5 }}
-          >
-          Designing what you see, engineering what you don’t... shaping seamless experiences end to end.
-          </motion.p>
+          </p>
 
-          <motion.div 
+          <h1
+            className="hero-title"
+            data-reveal
+            data-parallax
+            style={{ '--reveal-delay': '0.15s' }}
+          >
+            Hi, I'm{' '}
+            <span className="hero-name" aria-label="Shardul Sawant">
+              {"Shardul Sawant".split('').map((char, index) => (
+                <span
+                  key={`${char}-${index}`}
+                  className="hero-name-char"
+                  aria-hidden="true"
+                  style={{ '--char-index': index }}
+                >
+                  {char === ' ' ? '\u00A0' : char}
+                </span>
+              ))}
+            </span>
+          </h1>
+
+          <p
+            className="hero-copy"
+            data-reveal
+            style={{ '--reveal-delay': '0.28s' }}
+          >
+            Designing what you see, engineering what you don’t... shaping seamless experiences end to end.
+          </p>
+
+          <div
             className="social-links"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2.8, duration: 0.5 }}
+            data-reveal
+            style={{ '--reveal-delay': '0.4s' }}
           >
             <a
               href="https://github.com/carnifex-cmd"
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"
+              aria-label="GitHub"
             >
               <FaGithub />
             </a>
@@ -76,20 +61,22 @@ const Hero = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"
+              aria-label="LinkedIn"
             >
               <FaLinkedin />
             </a>
             <a
               href="mailto:shardul855@gmail.com"
               className="social-link"
+              aria-label="Email"
             >
               <FaEnvelope />
             </a>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
 };
 
-export default Hero; 
+export default Hero;

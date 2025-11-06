@@ -1,9 +1,8 @@
-import { motion } from 'framer-motion';
-import { 
+import {
   FaReact, FaNodeJs, FaGitAlt,
-  FaHtml5, FaCss3Alt, FaJs, FaPython, FaDocker, FaGithub, FaJira
+  FaJs, FaPython, FaDocker, FaJira
 } from 'react-icons/fa';
-import { SiVuedotjs, SiWebpack, SiMongodb, SiFastapi, SiPostgresql, SiTailwindcss, SiNextdotjs, SiFirebase } from 'react-icons/si';
+import { SiVuedotjs, SiWebpack, SiMongodb, SiFastapi, SiPostgresql, SiTailwindcss, SiNextdotjs, SiFirebase, SiTypescript, SiExpress } from 'react-icons/si';
 
 const Skills = () => {
   const skills = [
@@ -12,6 +11,7 @@ const Skills = () => {
       items: [
         { name: "JavaScript (ES6)", icon: <FaJs /> },
         { name: "Python", icon: <FaPython /> },
+        { name: "TypeScript", icon: <SiTypescript /> },
       ]
     },
     {
@@ -21,6 +21,7 @@ const Skills = () => {
         { name: "Vue.js", icon: <SiVuedotjs /> },
         { name: "Next.js", icon: <SiNextdotjs /> },
         { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+        { name: "Express.js", icon: <SiExpress /> },
 
       ]
     },
@@ -48,47 +49,38 @@ const Skills = () => {
   return (
     <section id="skills" className="section section-dark">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <h2>Technical Skills</h2>
-          
-          <div className="skills-categories">
-            {skills.map((skillCategory, index) => (
-              <motion.div
-                key={index}
-                className="skill-category"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <h3>{skillCategory.category}</h3>
-                <div className="skills-grid">
-                  {skillCategory.items.map((skill, skillIndex) => (
-                    <motion.div
-                      key={skillIndex}
-                      className="skill-card"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <div className="skill-icon">
-                        {skill.icon}
-                      </div>
-                      <h4>{skill.name}</h4>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+        <h2 data-reveal>Technical Skills</h2>
+
+        <div className="skills-categories">
+          {skills.map((skillCategory, index) => (
+            <div
+              key={skillCategory.category}
+              className="skill-category"
+              data-reveal
+              style={{ '--reveal-delay': `${0.08 * index + 0.1}s` }}
+            >
+              <h3>{skillCategory.category}</h3>
+              <div className="skills-grid">
+                {skillCategory.items.map((skill, skillIndex) => (
+                  <div
+                    key={skill.name}
+                    className="skill-card surface-card"
+                    data-reveal
+                    style={{ '--reveal-delay': `${0.08 * skillIndex + 0.2}s` }}
+                  >
+                    <div className="skill-icon">
+                      {skill.icon}
+                    </div>
+                    <h4>{skill.name}</h4>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
 };
 
-export default Skills; 
+export default Skills;

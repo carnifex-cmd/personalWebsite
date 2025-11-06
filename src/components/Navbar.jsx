@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { FaBars, FaTimes, FaSun, FaMoon, FaEye } from 'react-icons/fa';
-import { motion } from 'framer-motion';
 
 const Navbar = ({ theme, toggleTheme, highContrast, toggleContrast }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,7 +7,7 @@ const Navbar = ({ theme, toggleTheme, highContrast, toggleContrast }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 50;
+      const isScrolled = window.scrollY > 80;
       if (isScrolled !== scrolled) {
         setScrolled(isScrolled);
       }
@@ -45,7 +44,7 @@ const Navbar = ({ theme, toggleTheme, highContrast, toggleContrast }) => {
 
         <div className="nav-right">
           <button
-            className="high-contrast-toggle"
+            className={`high-contrast-toggle ${highContrast ? 'active' : ''}`}
             onClick={toggleContrast}
             aria-label="Toggle high contrast mode"
           >
@@ -62,6 +61,7 @@ const Navbar = ({ theme, toggleTheme, highContrast, toggleContrast }) => {
             className="mobile-menu-btn"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
+            aria-expanded={isOpen}
           >
             {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
           </button>

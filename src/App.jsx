@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -28,6 +27,92 @@ function App() {
     localStorage.setItem('contrast', highContrast.toString());
   }, [highContrast]);
 
+  useEffect(() => {
+    // Orchestrate reveal + parallax animations with a reduced-motion fallback.
+    const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const setupReveal = () => {
+      const elements = document.querySelectorAll('[data-reveal]');
+
+      if (reduceMotionQuery.matches) {
+        elements.forEach((el) => el.classList.add('is-visible'));
+        return () => {};
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
+
+      elements.forEach((el) => observer.observe(el));
+      return () => observer.disconnect();
+    };
+
+    const setupParallax = () => {
+      const hero = document.querySelector('.hero');
+      const target = hero?.querySelector('[data-parallax]');
+
+      if (!hero || !target) {
+        return () => {};
+      }
+
+      if (reduceMotionQuery.matches) {
+        target.style.transform = '';
+        return () => {};
+      }
+
+      let rafId = null;
+
+      const update = () => {
+        const heroHeight = hero.offsetHeight || 1;
+        const progress = Math.min(Math.max(window.scrollY / heroHeight, 0), 1);
+        target.style.transform = `translateY(${progress * 60}px)`;
+        rafId = null;
+      };
+
+      const schedule = () => {
+        if (rafId !== null) {
+          return;
+        }
+        rafId = requestAnimationFrame(update);
+      };
+
+      schedule();
+      window.addEventListener('scroll', schedule, { passive: true });
+      window.addEventListener('resize', schedule);
+
+      return () => {
+        window.removeEventListener('scroll', schedule);
+        window.removeEventListener('resize', schedule);
+        if (rafId !== null) {
+          cancelAnimationFrame(rafId);
+        }
+      };
+    };
+
+    let cleanupReveal = setupReveal();
+    let cleanupParallax = setupParallax();
+
+    const handleMotionPreferenceChange = () => {
+      cleanupReveal();
+      cleanupParallax();
+      cleanupReveal = setupReveal();
+      cleanupParallax = setupParallax();
+    };
+
+    reduceMotionQuery.addEventListener('change', handleMotionPreferenceChange);
+
+    return () => {
+      cleanupReveal();
+      cleanupParallax();
+      reduceMotionQuery.removeEventListener('change', handleMotionPreferenceChange);
+    };
+  }, []);
+
   const toggleTheme = () => {
     setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light')
   }
@@ -37,7 +122,7 @@ function App() {
   }
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen">
+    <div className="app-shell">
       <Navbar 
         theme={theme} 
         toggleTheme={toggleTheme}

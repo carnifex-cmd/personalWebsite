@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { FaBriefcase } from 'react-icons/fa';
 
 const Experience = () => {
@@ -15,39 +14,28 @@ const Experience = () => {
   return (
     <section id="experience" className="section section-dark">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <h2>What I Do</h2>
-          
-          <div className="experience-list">
-            {experiences.map((exp, index) => (
-              <motion.div
-                key={index}
-                className="experience-card"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className="experience-content">
-                  <div className="experience-icon">
-                    <FaBriefcase />
-                  </div>
-                  <div className="experience-details">
-                    <h3>{exp.position}</h3>
-                    <p className="company">{exp.company}</p>
-                    <p className="period">{exp.period}</p>
-                    <p className="summary">{exp.summary}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+        <h2 data-reveal>What I Do</h2>
+
+        <div className="experience-list">
+          {experiences.map((exp, index) => (
+            <article
+              key={exp.company}
+              className="experience-card surface-card"
+              data-reveal
+              style={{ '--reveal-delay': `${0.12 * index + 0.12}s` }}
+            >
+              <div className="experience-icon" aria-hidden="true">
+                <FaBriefcase />
+              </div>
+              <div className="experience-details">
+                <h3>{exp.position}</h3>
+                <p className="company">{exp.company}</p>
+                <p className="period">{exp.period}</p>
+                <p className="summary">{exp.summary}</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import jobApplicationImage from '../assets/jobapplication.jpg';
 import matchYourCodeImage from '../assets/matchyourcode.jpg';
@@ -25,7 +24,7 @@ const Projects = () => {
       title: "Echo Board",
       description: "Developed a personal audio message board using React and Firebase. Record, organize, and share voice notes with custom boards. Features Google authentication, privacy controls, and a responsive Tailwind CSS design for seamless desktop and mobile use.",
       image: echoBoard, 
-      technologies: ["React", "Firebase (Firestore, Storage, Authentication)", "Tailwind CSS", "Web Audio API", "React Router", "Context API"],
+      technologies: ["React", "Firebase", "Tailwind CSS", "Web Audio API", "React Router", "Context API"],
       github: "https://github.com/carnifex-cmd/echoBoard",
       live: "https://echo-board-theta.vercel.app/"
     }
@@ -35,89 +34,63 @@ const Projects = () => {
   return (
     <section id="projects" className="section">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <h2>Featured Projects</h2>
-          
-          <div className="projects-grid">
-            {projects.map((project, index) => (
-              <motion.div
-                key={index}
-                className="project-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                {project.image && (
-                  <div style={{ 
-                    width: '100%', 
-                    display: 'flex', 
-                    justifyContent: 'center', 
-                    alignItems: 'flex-start',
-                    marginBottom: '1rem'
-                  }}>
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      style={{
-                        width: '100%',
-                        height: 'auto',
-                        maxWidth: '100%',
-                        objectFit: 'contain',
-                        borderRadius: '8px'
-                      }}
-                    />
-                  </div>
-                )}
-                
-                <div className="project-content">
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                  
-                  <div className="project-tags">
-                    {project.technologies.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="project-tag"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <div className="project-links">
+        <h2 data-reveal>Featured Projects</h2>
+
+        <div className="projects-grid">
+          {projects.map((project, index) => (
+            <article
+              key={project.title}
+              className="project-card surface-card"
+              data-reveal
+              style={{ '--reveal-delay': `${0.12 * index + 0.12}s` }}
+            >
+              {project.image && (
+                <div className="project-media">
+                  <img src={project.image} alt={project.title} />
+                </div>
+              )}
+
+              <div className="project-content">
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+
+                <div className="project-tags">
+                  {project.technologies.map((tech) => (
+                    <span key={tech} className="project-tag">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="project-links">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-link"
+                    aria-label={`${project.title} GitHub`}
+                  >
+                    <FaGithub /> Code
+                  </a>
+                  {project.live && (
                     <a
-                      href={project.github}
+                      href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="project-link"
+                      aria-label={`${project.title} live demo`}
                     >
-                      <FaGithub /> Code
+                      <FaExternalLinkAlt /> Live Demo
                     </a>
-                    {project.live && (
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-link"
-                      >
-                        <FaExternalLinkAlt /> Live Demo
-                      </a>
-                    )}
-                  </div>
+                  )}
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
 };
 
-export default Projects; 
+export default Projects;
