@@ -89,6 +89,7 @@
 html {
   scroll-behavior: smooth;
   background: var(--color-bg);
+  overflow-x: hidden;
 }
 
 body {
@@ -425,6 +426,7 @@ button:focus-visible {
   gap: 0.02em;
   position: relative;
   background: inherit;
+  overflow: hidden;
 }
 
 .hero-name::after {
