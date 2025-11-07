@@ -192,6 +192,9 @@ img {
     transform 0.25s var(--motion-ease),
     border-color 0.25s var(--motion-ease),
     background 0.25s var(--motion-ease);
+  opacity: 0;
+  animation: mobile-pill-drop 0.95s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: calc(var(--pill-index, 0) * 0.12s + 0.1s);
 }
 
 .mobile-action-button:hover,
@@ -220,6 +223,31 @@ img {
 :root[data-theme='light'] .mobile-action-button:focus-visible {
   background: rgba(255, 255, 255, 0.65);
   border-color: rgba(79, 70, 229, 0.4);
+}
+
+@keyframes mobile-pill-drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-120px) scale(0.95);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateY(12px);
+  }
+
+  75% {
+    transform: translateY(-6px);
+  }
+
+  90% {
+    transform: translateY(3px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .container {
@@ -889,7 +917,8 @@ button:focus-visible {
   .surface-card,
   .social-link,
   .project-link,
-  .contact-card {
+  .contact-card,
+  .mobile-action-button {
     transition: none;
   }
 
@@ -899,6 +928,12 @@ button:focus-visible {
   .contact-card:hover {
     transform: none;
     box-shadow: none;
+  }
+
+  .mobile-action-button {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 
   .hero-title {

@@ -30,13 +30,14 @@ const links = [
 const MobileActionBar = () => {
   return (
     <nav className="mobile-action-bar" aria-label="Quick navigation">
-      {links.map(({ href, label, icon, external }) => (
+      {links.map(({ href, label, icon, external }, index) => (
         <a
           key={label}
           href={href}
           className="mobile-action-button"
           aria-label={label}
           onClick={(event) => event.currentTarget.blur()}
+          style={{ '--pill-index': index }}
           {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
         >
           {icon}
