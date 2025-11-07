@@ -6,6 +6,7 @@ import Skills from './components/Skills'
 import Experience from './components/Experience'
 import Projects from './components/Projects'  // Commented until projects are ready
 import Contact from './components/Contact'
+import MobileActionBar from './components/MobileActionBar'
 
 function App() {
   const [theme, setTheme] = useState(() => {
@@ -139,6 +140,7 @@ function App() {
         <Projects />
         <Contact />
       </main>
+      <MobileActionBar />
     </div>
   )
 }
