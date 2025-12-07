@@ -2,20 +2,29 @@ import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import jobApplicationImage from '../assets/jobapplication.jpg';
 import matchYourCodeImage from '../assets/matchyourcode.jpg';
 import echoBoard from '../assets/echoboard.png';
+import adopsAnalyticsImage from '../assets/adopsanalytics.png';
 
 const Projects = () => {
   const projects = [
     {
+      title: "Adops Analytics",
+      description: "Developed a real-time ad operations dashboard to visualize creative delivery, geo-level performance, and system health using a scalable refresh engine and modern UI components.",
+      technologies: ["Next.js", "Recharts", "Shadcn UI", "Tailwind CSS", "MongoDB", "Node.js", "Express"],
+      image: adopsAnalyticsImage,
+      github: "https://github.com/carnifex-cmd/adops-analytics",
+      live: "https://adops-analytics.vercel.app/dashboard"
+    },
+    {
       title: "MatchYourCode",
       description: "Developed a platform to assist developers in mastering Data Structures & Algorithms through spaced repetition of LeetCode-style problems",
-      image: matchYourCodeImage, 
+      image: matchYourCodeImage,
       technologies: ["React", "Node.js", "MongoDB"],
       github: "https://github.com/carnifex-cmd/matchyourcode",
     },
     {
       title: "Job Application Tracker Dashboard",
       description: "Developed a modern, full-stack job application tracking dashboard built with React and Node.js. Track a job search progress with a clean, responsive interface and powerful features.",
-      image: jobApplicationImage, 
+      image: jobApplicationImage,
       technologies: ["React", "Node.js", "Express", "PostgreSQL", "Tailwind CSS"],
       github: "https://github.com/carnifex-cmd/JobApplicationTracker",
       live: "https://job-application-tracker-sage-five.vercel.app/"
@@ -23,7 +32,7 @@ const Projects = () => {
     {
       title: "Echo Board",
       description: "Developed a personal audio message board using React and Firebase. Record, organize, and share voice notes with custom boards. Features Google authentication, privacy controls, and a responsive Tailwind CSS design for seamless desktop and mobile use.",
-      image: echoBoard, 
+      image: echoBoard,
       technologies: ["React", "Firebase", "Tailwind CSS", "Web Audio API", "React Router", "Context API"],
       github: "https://github.com/carnifex-cmd/echoBoard",
       live: "https://echo-board-theta.vercel.app/"

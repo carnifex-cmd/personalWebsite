@@ -790,6 +790,7 @@ button:focus-visible {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  margin-top: auto;
 }
 
 .project-link {
